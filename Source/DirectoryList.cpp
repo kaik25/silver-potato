@@ -1,4 +1,4 @@
-#include "DirectoryList.h"
+#include "..\Include\DirectoryList.h"
 
 DirectoryFileList::DirectoryFileList(string directoryPath) : 
 	_directoryPath(directoryPath),

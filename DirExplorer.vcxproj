@@ -10,6 +10,17 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\DirDataTypes.h" />
+    <ClInclude Include="Include\DirectoryList.h" />
+    <ClInclude Include="Include\Handle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\DirDataTypes.cpp" />
+    <ClCompile Include="Source\DirectoryList.cpp" />
+    <ClCompile Include="Source\Handle.cpp" />
+    <ClCompile Include="Source\main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A8E5D25A-2EFF-4D27-B19B-54F9EBCE0931}</ProjectGuid>
     <RootNamespace>DirExplorer</RootNamespace>
@@ -63,17 +74,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="DirDataTypes.h" />
-    <ClInclude Include="DirectoryList.h" />
-    <ClInclude Include="Handle.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="DirDataTypes.cpp" />
-    <ClCompile Include="DirectoryList.cpp" />
-    <ClCompile Include="Handle.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

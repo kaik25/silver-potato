@@ -1,4 +1,4 @@
-#include "DirDataTypes.h"
+#include "..\Include\DirDataTypes.h"
 
 Win32FindData::Win32FindData(WIN32_FIND_DATA rawFindFileData) :
 	_fileAttributes(rawFindFileData.dwFileAttributes),

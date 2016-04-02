@@ -4,9 +4,9 @@
 #include <string>
 #include <iostream>
 
-#include "Handle.h"
-#include "DirDataTypes.h"
-#include "DirectoryList.h"
+#include "..\Include\Handle.h"
+#include "..\Include\DirDataTypes.h"
+#include "..\Include\DirectoryList.h"
 
 using namespace std;
 
