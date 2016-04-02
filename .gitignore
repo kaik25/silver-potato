@@ -1,0 +1,8 @@
+Debug\.*
+.*.vcxproj.filters
+*.o
+*.a
+*.so
+*.pl
+*.6
+*.out
