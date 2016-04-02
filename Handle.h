@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include <exception>
 #include <string>
+#include <memory>
 
 using namespace std;
 
@@ -12,29 +13,41 @@ class Handle{
 protected:
 	HANDLE _handle;
 public:
-	Handle(HANDLE rawHandle);
+	Handle(HANDLE& rawHandle);
+	Handle() : _handle(nullptr){}; 
 	void closeHandle();
 };
 
-class AutoCloseHandle : public Handle {
+typedef shared_ptr<Handle> HandlePtr;
+
+class HandleCloser : public Handle {
 public:
-	AutoCloseHandle(HANDLE rawHandle) : Handle(rawHandle) {};
-	~AutoCloseHandle();
+	HandleCloser(HANDLE& rawHandle) : Handle(rawHandle) {};
+	HandleCloser() : Handle(){};
+	~HandleCloser();
 };
+
+typedef shared_ptr<HandleCloser> HandleCloserPtr;
 
 class FindHandle : public Handle {
 public:
-	FindHandle(HANDLE rawHandle) : Handle(rawHandle) {};
+	FindHandle(HANDLE& rawHandle) : Handle(rawHandle) {};
+	FindHandle() : Handle(){};
 	void closeHandle();
 };
 
-class AutoCloseFindHandle : public FindHandle {
+typedef shared_ptr<FindHandle> FindHandlePtr;
+
+class FindHandleCloser : public FindHandle {
 public:
-	AutoCloseFindHandle() : FindHandle(nullptr){};
-	AutoCloseFindHandle(HANDLE rawHandle) : FindHandle(rawHandle) {};
-	~AutoCloseFindHandle();
+	//FindHandleCloser() : FindHandle(nullptr){};
+	FindHandleCloser(HANDLE& rawHandle) : FindHandle(rawHandle) {};
+	FindHandleCloser() : FindHandle(){};
+	~FindHandleCloser();
 
 };
+
+typedef shared_ptr<FindHandleCloser> FindHandleCloserPtr;
 
 class BaseHandleException : public exception {
 public:

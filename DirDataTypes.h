@@ -4,10 +4,11 @@
 #include <windows.h>
 #include <tchar.h>
 #include <stdio.h>
-
+#include <memory>
 #include <string>
 
-typedef FILETIME;
+#include "Handle.h"
+#include "DirectoryList.h"
 
 using namespace std;
 
@@ -37,6 +38,10 @@ class FileTime{
 public:
 	FileTime(FILETIME rawFileTimeData);
 	FileTime();
+	void print();
+	string getTimeStr();
+private:
+	time_t _getTime();
 
 };
 
@@ -54,6 +59,23 @@ class Win32FindData {
 public:
 	Win32FindData(WIN32_FIND_DATA rawFindFileData);
 	Win32FindData();
+	~Win32FindData();
+	void print();
 };
+
+typedef shared_ptr<Win32FindData> Win32FindDataPtr;
+
+class FirstFileFindData {
+	string _directoryPath;
+	Win32FindDataPtr _findWin32DataPtr;
+	FindHandleCloserPtr _findHandlePtr;	
+public:
+	FirstFileFindData(string directoryPath);
+	void print();
+private:
+	void _findFirstFile();
+};
+
+typedef shared_ptr<FirstFileFindData> FirstFileFindDataPtr;
 
 #endif

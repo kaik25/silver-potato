@@ -10,10 +10,19 @@
 
 using namespace std;
 
-void _tmain(int argc, TCHAR *argv[])
-{
-	string targetFolder = "c:\\temp";
-	cout << "Performing Dir on " << targetFolder;
+void unsafe_main(){
+	string targetFolder = "d:\\projects";
+	OutputDebugString(string("Performing Dir on " + targetFolder + "\n").c_str());
 
 	DirectoryFileList directoryFileList = DirectoryFileList(targetFolder);
+	directoryFileList.printFirstFile();
 }
+
+void _tmain(int argc, TCHAR *argv[]){
+	try {
+		unsafe_main();
+	} catch (exception& e) {
+		OutputDebugString(e.what());
+	}
+};
+
